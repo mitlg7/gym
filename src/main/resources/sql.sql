@@ -26,6 +26,7 @@ create table CLIENT
     registration date not null,
     birthday     date,
     gender_id    int,
+    active       bool,
     foreign key (gender_id) references GENDER (id)
 );
 
@@ -61,7 +62,29 @@ create table ACCOUNTING
     foreign key (client_id) references CLIENT (id)
 );
 
-delimiter $
+create table TRAINER
+(
+    id        int primary key auto_increment,
+    name varchar(128),
+    phone     varchar(128),
+    position  varchar(128),
+    birthday  date,
+    gender_id int,
+    foreign key (gender_id) references GENDER (id)
+);
+
+insert into ADMIN(login, password)
+    value ('admin', '$2a$10$JXQID.XbrviNFf9xScU3R.V..RiFbtdPpe6KYpK9rqbMtAVpK/37O');
+
+insert into GENDER (type)
+    value ('Мужской');
+
+insert into GENDER (type)
+    value ('Женский');
+
+
+delimiter
+$
 
 create procedure getAllGender()
 select *
@@ -112,6 +135,11 @@ create procedure getAllHall()
 select *
 from HALL;
 $
+create procedure getHallById(_id int)
+select *
+from HALL
+where id = _id;
+$
 
 create procedure createHall(_name varchar(128))
 insert into HALL(name) value (_name);
@@ -120,6 +148,11 @@ $
 create procedure getAllCONTINUANCE()
 select *
 from CONTINUANCE;
+$
+create procedure getCONTINUANCEById(_id int)
+select *
+from CONTINUANCE
+where id = _id;
 $
 
 create procedure createCONTINUANCE(_days int, _name varchar(128))
@@ -152,13 +185,19 @@ from CLIENT
 where id = _id;
 $
 
-create procedure createClient(_firstname varchar(128), _lastname varchar(128), _birthday date, _registration date)
+create procedure createClient(_firstname varchar(128),
+                              _lastname varchar(128),
+                              _phone varchar(128),
+                              _birthday date,
+                              _registration date,
+                              _gender varchar(128))
+insert into client(firstname, lastname, phone, birthday, registration, gender_id, active)
+    VALUE (_firstname, _lastname, _phone, _birthday, _registration, (select id from gender where type = _gender), 1);
+
+$
 
 create procedure getAccountingByClient(_client_id int)
 select *
 from ACCOUNTING
 where client_id = _client_id;
 $
-
-
-

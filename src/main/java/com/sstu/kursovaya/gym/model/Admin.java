@@ -5,8 +5,8 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class Continuance{
+public class Admin {
     private int id;
-    private String type;
-    private int days;
+    private String login;
+    private String password;
 }
