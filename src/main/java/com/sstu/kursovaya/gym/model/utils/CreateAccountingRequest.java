@@ -1,4 +1,4 @@
-package com.sstu.kursovaya.gym.model;
+package com.sstu.kursovaya.gym.model.utils;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -7,10 +7,10 @@ import java.util.Date;
 
 @Data
 @Accessors(chain = true)
-public class Accounting {
-    private int id;
+public class CreateAccountingRequest {
     private Date start;
     private Date end;
-    private Client client;
-    private Subscription subscription;
+    private int client_id;
+    private int subscription_id;
+
 }

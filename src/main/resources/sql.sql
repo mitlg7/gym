@@ -44,8 +44,16 @@ create table SUBSCRIPTION
     price          int,
     continuance_id int,
     hall_id        int,
+    trainer_id     int,
     foreign key (hall_id) references HALL (id),
-    foreign key (continuance_id) references CONTINUANCE (id)
+    foreign key (continuance_id) references CONTINUANCE (id),
+    foreign key (trainer_id) references trainer (id)
+);
+
+create table Position
+(
+    id   int primary key auto_increment,
+    type varchar(128) not null
 );
 
 create table SERV_SUB
@@ -55,22 +63,25 @@ create table SERV_SUB
 
 create table ACCOUNTING
 (
-    id         int primary key auto_increment,
-    date_start date,
-    date_end   date,
-    client_id  int,
-    foreign key (client_id) references CLIENT (id)
+    id              int primary key auto_increment,
+    start           date,
+    end             date,
+    client_id       int,
+    SUBSCRIPTION_ID int,
+    foreign key (client_id) references CLIENT (id),
+    foreign key (SUBSCRIPTION_ID) references SUBSCRIPTION (id)
 );
 
 create table TRAINER
 (
-    id        int primary key auto_increment,
-    name varchar(128),
-    phone     varchar(128),
-    position  varchar(128),
-    birthday  date,
-    gender_id int,
-    foreign key (gender_id) references GENDER (id)
+    id          int primary key auto_increment,
+    name        varchar(128),
+    phone       varchar(128),
+    birthday    date,
+    gender_id   int,
+    position_id int,
+    foreign key (gender_id) references GENDER (id),
+    foreign key (position_id) references position (id)
 );
 
 insert into ADMIN(login, password)
@@ -91,13 +102,27 @@ select *
 from GENDER;
 $
 
+create procedure getAllPosition()
+select *
+from Position;
+$
+
 create procedure createGender(_type varchar(128))
 insert into GENDER(type) value (_type);
+$
+create procedure createPosition(_type varchar(128))
+insert into gym.position(type) value (_type);
 $
 
 create procedure deleteGender(_id int)
 delete
 from GENDER
+where id = _id;
+$
+
+create procedure deletePosition(_id int)
+delete
+from gym.position
 where id = _id;
 $
 
@@ -116,7 +141,6 @@ $
 create procedure getClientById(_id int)
 select *
 from CLIENT
-         join GENDER G on G.id = CLIENT.gender_id
 where CLIENT.id = _id;
 $
 
@@ -135,9 +159,18 @@ create procedure getAllHall()
 select *
 from HALL;
 $
+create procedure getAllTrainers()
+select *
+from trainer;
+$
 create procedure getHallById(_id int)
 select *
 from HALL
+where id = _id;
+$
+create procedure getTrainerById(_id int)
+select *
+from trainer
 where id = _id;
 $
 
@@ -165,12 +198,24 @@ delete
 from CONTINUANCE
 where id = _id;
 $
+create procedure deleteHall(_id int)
+delete
+from HALL
+where id = _id;
+$
 
 create procedure getAllSubscription()
 select *
 from SUBSCRIPTION
-         join HALL H on H.id = SUBSCRIPTION.hall_id
-         join CONTINUANCE C on C.id = SUBSCRIPTION.continuance_id;
+$
+
+create procedure createSubscription(_name varchar(128),
+                                    _price int,
+                                    _conti_id int,
+                                    _hall_id int,
+                                    _trainer_id int)
+insert into SUBSCRIPTION(name, price, continuance_id, hall_id, trainer_id)
+    VALUE (_name, _price, _conti_id, _hall_id, _trainer_id);
 $
 
 create procedure getSubscriptionById(_id int)
@@ -185,19 +230,68 @@ from CLIENT
 where id = _id;
 $
 
+create procedure deleteTrainer(_id int)
+delete
+from trainer
+where id = _id;
+$
+create procedure deleteSubscription(_id int)
+delete
+from SUBSCRIPTION
+where id = _id;
+$
+create procedure deleteAccounting(_id int)
+delete
+from ACCOUNTING
+where id = _id;
+$
+create procedure createAccounting(_start date,
+                                  _end date,
+                                  _client_id int,
+                                  _SUBSCRIPTION_ID int
+)
+insert into ACCOUNTING (start, end, client_id, SUBSCRIPTION_ID)
+values (_start, _end, _client_id, _SUBSCRIPTION_ID);
+$
+
 create procedure createClient(_firstname varchar(128),
                               _lastname varchar(128),
                               _phone varchar(128),
                               _birthday date,
                               _registration date,
-                              _gender varchar(128))
+                              _gender int)
 insert into client(firstname, lastname, phone, birthday, registration, gender_id, active)
-    VALUE (_firstname, _lastname, _phone, _birthday, _registration, (select id from gender where type = _gender), 1);
+    VALUE (_firstname, _lastname, _phone, _birthday, _registration, _gender, 1);
 
+$
+
+create procedure createTrainer(_name varchar(128),
+                               _phone varchar(128),
+                               _position_id int,
+                               _birthday date,
+                               _gender varchar(128)
+)
+insert into trainer(name, phone, position_id, birthday, gender_id)
+    VALUE (_name, _phone, _position_id, _birthday, ((select id from gender where type = _gender)));
 $
 
 create procedure getAccountingByClient(_client_id int)
 select *
 from ACCOUNTING
 where client_id = _client_id;
+$
+create procedure getAccounting(_id int)
+select *
+from ACCOUNTING
+where id = _id;
+$
+create procedure getPosition(_id int)
+select *
+from gym.position
+where id = _id;
+$
+create procedure getGender(_id int)
+select *
+from GENDER
+where id = _id;
 $

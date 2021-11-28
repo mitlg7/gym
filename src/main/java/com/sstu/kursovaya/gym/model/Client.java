@@ -14,7 +14,7 @@ public class Client {
     private String phone;
     private Date birthday;
     private Date registration;
-    private String gender;
+    private Gender gender;
     private boolean active;
 
 }

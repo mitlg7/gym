@@ -16,7 +16,7 @@ import java.util.Set;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {

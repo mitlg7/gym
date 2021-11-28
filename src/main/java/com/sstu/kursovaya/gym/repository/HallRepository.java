@@ -1,6 +1,5 @@
 package com.sstu.kursovaya.gym.repository;
 
-import com.sstu.kursovaya.gym.model.Client;
 import com.sstu.kursovaya.gym.model.Hall;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -27,14 +26,18 @@ public class HallRepository {
     }
 
     public Hall get(int id) {
-        return one("call getHallById(?)", mapper);
+        return one("call getHallById(?)", id);
     }
 
-    public List<Hall> getAll(){
+    public List<Hall> getAll() {
         return jdbc.query("call getAllHall()", mapper);
     }
 
-    public void create(Hall hall){
+    public void create(Hall hall) {
         jdbc.update("call createHall(?)", hall.getName());
+    }
+
+    public void delete(int id) {
+        jdbc.update("call deleteHall(?)", id);
     }
 }

@@ -1,5 +1,6 @@
 package com.sstu.kursovaya.gym.repository;
 
+import com.sstu.kursovaya.gym.model.Admin;
 import com.sstu.kursovaya.gym.model.Trainer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,15 +23,30 @@ public class TrainerRepository {
             .setGender(rs.getString("type"))
             .setPosition(rs.getString("position"));
 
-    public Trainer get(int id){
-        return null;
+    private Trainer one(String sql, Object... args) {
+        var res = jdbc.query(sql, mapper, args);
+        return res.size() == 0 ? null : res.get(0);
     }
 
-    public List<Trainer> getAll(){
-        return null;
+    public Trainer get(int id) {
+        return one("call getTrainerById(?)", id);
     }
 
-    public void create(Trainer trainer){
+    public List<Trainer> getAll() {
+        return jdbc.query("call getAllTrainers()",mapper);
+    }
 
+    public void create(Trainer trainer) {
+        jdbc.update("call createTrainer(?,?,?,?,?)",
+                trainer.getName(),
+                trainer.getPhone(),
+                trainer.getPosition(),
+                trainer.getBirthday(),
+                trainer.getGender()
+        );
+    }
+
+    public void delete(int id) {
+        jdbc.update("call deleteTrainer(?)", id);
     }
 }

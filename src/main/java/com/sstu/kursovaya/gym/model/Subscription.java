@@ -6,9 +6,10 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class Subscription {
-    private Long id;
-    private Long price;
+    private int id;
+    private int price;
     private String name;
     private Trainer trainer;
     private Hall hall;
+    private Continuance continuance;
 }

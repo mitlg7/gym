@@ -1,7 +1,7 @@
 package com.sstu.kursovaya.gym.repository;
 
-import com.sstu.kursovaya.gym.model.Admin;
 import com.sstu.kursovaya.gym.model.Client;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public class ClientRepository {
+    @Autowired
+    private GenderRepository genderRepository;
     final JdbcTemplate jdbc;
 
     public ClientRepository(JdbcTemplate jdbc) {
@@ -23,6 +25,7 @@ public class ClientRepository {
             .setPhone(rs.getString("phone"))
             .setRegistration(rs.getDate("registration"))
             .setBirthday(rs.getDate("birthday"))
+            .setGender(genderRepository.get(rs.getInt("gender_id")))
             .setActive(rs.getBoolean("active"));
 
     private Client one(String sql, Object... args) {
@@ -34,6 +37,10 @@ public class ClientRepository {
         return jdbc.query("call getAllClients()", mapper);
     }
 
+    public Client get(int id) {
+        return one("call getClientById(?)", id);
+    }
+
     public void create(Client client) {
         jdbc.update("call createClient(?,?,?,?,?,?)",
                 client.getFirstName(),
@@ -41,11 +48,11 @@ public class ClientRepository {
                 client.getPhone(),
                 client.getBirthday(),
                 client.getRegistration(),
-                client.getGender()
+                client.getGender().getId()
         );
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         jdbc.update("call deleteClient(?)", id);
     }
 }

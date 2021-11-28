@@ -9,11 +9,6 @@
                 <label for="name" class="form-label">Имя</label>
                 <input name="name" id="name" type="text" class="form-control" placeholder="Имя" aria-label="Имя">
             </div>
-            <div class="col">
-                <label for="lastname" class="form-label">Фамилия</label>
-                <input name="lastname" id="lastname" type="text" class="form-control" placeholder="Фамилия"
-                       aria-label="Фамилия">
-            </div>
         </div>
         <div class="row g-3">
             <div class="col">

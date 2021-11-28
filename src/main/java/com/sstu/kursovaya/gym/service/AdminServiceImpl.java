@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class AdminServiceImpl implements AdminService{
 
     @Autowired
-    AdminRepository adminRepository;
+    private AdminRepository adminRepository;
 
     @Override
     public Admin getByLogin(String login) {
