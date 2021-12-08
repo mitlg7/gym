@@ -33,7 +33,7 @@ create table CLIENT
 create table CONTINUANCE
 (
     id   int primary key auto_increment,
-    name varchar(128) not null,
+    type varchar(128) not null,
     days int          not null
 );
 
@@ -189,7 +189,7 @@ where id = _id;
 $
 
 create procedure createCONTINUANCE(_days int, _name varchar(128))
-insert into CONTINUANCE(name, days)
+insert into CONTINUANCE(type, days)
 VALUES (_name, _days);
 $
 
@@ -269,10 +269,9 @@ create procedure createTrainer(_name varchar(128),
                                _phone varchar(128),
                                _position_id int,
                                _birthday date,
-                               _gender varchar(128)
-)
+                               _gender_id int)
 insert into trainer(name, phone, position_id, birthday, gender_id)
-    VALUE (_name, _phone, _position_id, _birthday, ((select id from gender where type = _gender)));
+    VALUE (_name, _phone, _position_id, _birthday, _gender_id);
 $
 
 create procedure getAccountingByClient(_client_id int)

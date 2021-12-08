@@ -1,6 +1,7 @@
 package com.sstu.kursovaya.gym.service;
 
 import com.sstu.kursovaya.gym.model.Trainer;
+import com.sstu.kursovaya.gym.model.utils.CreateTrainerRequest;
 import com.sstu.kursovaya.gym.repository.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public void create(Trainer trainer) {
+    public void create(CreateTrainerRequest trainer) {
         trainerRepository.create(trainer);
     }
 }

@@ -3,6 +3,9 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-
+    ${trainer.id}
+    ${trainer.name}
+    ${trainer.phone}
+    ${trainer.birthday}
 
 </@component.skeleton>

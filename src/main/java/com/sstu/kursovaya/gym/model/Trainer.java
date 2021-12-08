@@ -11,7 +11,7 @@ public class Trainer {
     private int id;
     private String name;
     private String phone;
-    private String position;
+    private Position position;
     private Date birthday;
-    private String gender;
+    private Gender gender;
 }

@@ -2,6 +2,8 @@ package com.sstu.kursovaya.gym.repository;
 
 import com.sstu.kursovaya.gym.model.Admin;
 import com.sstu.kursovaya.gym.model.Trainer;
+import com.sstu.kursovaya.gym.model.utils.CreateTrainerRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,12 @@ import java.util.List;
 public class TrainerRepository {
     final JdbcTemplate jdbc;
 
+    @Autowired
+    private GenderRepository genderRepository;
+
+    @Autowired
+    private PositionRepository positionRepository;
+
     public TrainerRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
@@ -19,9 +27,10 @@ public class TrainerRepository {
     RowMapper<Trainer> mapper = (rs, rowNum) -> new Trainer()
             .setId(rs.getInt("id"))
             .setName(rs.getString("name"))
-            .setBirthday(rs.getDate("birthdate"))
-            .setGender(rs.getString("type"))
-            .setPosition(rs.getString("position"));
+            .setBirthday(rs.getDate("birthday"))
+            .setGender(genderRepository.get(rs.getInt("gender_id")))
+            .setPhone(rs.getString("phone"))
+            .setPosition(positionRepository.get(rs.getInt("position_id")));
 
     private Trainer one(String sql, Object... args) {
         var res = jdbc.query(sql, mapper, args);
@@ -36,7 +45,7 @@ public class TrainerRepository {
         return jdbc.query("call getAllTrainers()",mapper);
     }
 
-    public void create(Trainer trainer) {
+    public void create(CreateTrainerRequest trainer) {//todo поправить процедуру?
         jdbc.update("call createTrainer(?,?,?,?,?)",
                 trainer.getName(),
                 trainer.getPhone(),

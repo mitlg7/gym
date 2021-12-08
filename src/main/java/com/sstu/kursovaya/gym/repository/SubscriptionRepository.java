@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Repository
-public class SubscriptionRepository {
+public class  SubscriptionRepository {
     final JdbcTemplate jdbc;
 
     @Autowired
