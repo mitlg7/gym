@@ -27,6 +27,7 @@ public class  SubscriptionRepository {
     private final RowMapper<Subscription> mapper = (rs, rowNum) -> new Subscription()
             .setId(rs.getInt("id"))
             .setName(rs.getString("name"))
+            .setPrice(rs.getInt("price"))
             .setContinuance(continuanceRepository.get(rs.getInt("continuance_id")))
             .setHall(hallRepository.get(rs.getInt("hall_id")))
             .setTrainer(trainerRepository.get(rs.getInt("trainer_id")));

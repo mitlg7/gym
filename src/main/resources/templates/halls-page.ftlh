@@ -4,13 +4,10 @@
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
     <div class="row container m-4">
-        <#list subscriptions as sub>
+        <#list halls as hal>
             <div class="card col-3 m-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">${sub.name}</h5>
-                    <p class="card-text">Price ${sub.price}</p>
-                    <p class="card-text">Time ${sub.continuance.days} days</p>
-                    <div class="btn btn-lg btn-danger">Продлить</div>
+                    <h5 class="card-title">${hal.name}</h5>
                 </div>
             </div>
         </#list>

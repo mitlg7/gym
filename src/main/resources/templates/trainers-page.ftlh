@@ -9,8 +9,8 @@
                 <#if trainer.gender.type == "Мужской">
                     <img class="card-img-top" src="/img/men.png" alt="Card image cap">
                 </#if>
-                <#if trainer.getLettersGender().equals("Жeнский")>
-                    <img class="card-img-top" src="/img/women.jpg" alt="Card image cap">
+                <#if trainer.gender.type == "Женский">
+                    <img class="card-img-top" src="/img/women.png" alt="Card image cap">
                 </#if>
                 <div class="card-body">
                     <h5 class="card-title">${trainer.name}</h5>

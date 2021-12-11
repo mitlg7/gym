@@ -12,4 +12,14 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("eror404")
+    public String eror404(Model model){
+        return "eror404";
+    }
+
+    @GetMapping("eror403")
+    public String eror403(Model model){
+        return "eror403";
+    }
+
 }
