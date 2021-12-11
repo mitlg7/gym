@@ -5,7 +5,7 @@
     <@bootstrap.navbar/>
     <div class="container">
         <div class="row ">
-            <img  class="col-6" src="index.png">
+            <img  class="col-6" src="/img/index.png">
 
             <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                 <h1>Elegant and creative solutions</h1>
