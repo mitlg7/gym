@@ -14,4 +14,7 @@ public class Trainer {
     private Position position;
     private Date birthday;
     private Gender gender;
+    public Character getLettersGender(){
+        return gender.getType().toCharArray()[0];
+    }
 }

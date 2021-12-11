@@ -28,6 +28,14 @@
                 </#list>
             </select>
         </div>
+        <div class="col">
+            <label for="position" class="form-label">Должность</label>
+            <select class="form-control" name="position" id="position">
+                <#list  positions as position>
+                    <option value="${position.id}">${position.type}</option>
+                </#list>
+            </select>
+        </div>
         <div class="row">
             <button type="submit" class="mx-auto col-8 btn btn-secondary mt-5 ">Сохранить</button>
         </div>

@@ -16,10 +16,10 @@
         </div>
 
         <div class="col">
-            <label for="trainer" class="form-label">Пол</label>
+            <label for="trainer" class="form-label">Тренер</label>
             <select class="form-control" name="trainer" id="trainer">
                 <#list  trainers as trainer>
-                    <option value="${trainer.id}">${trainer.name} / ${trainer.gender.type} пол</option>
+                    <option value="${trainer.id}">${trainer.name} / ${trainer.getLettersGender()}</option>
                 </#list>
             </select>
         </div>
@@ -41,6 +41,7 @@
                 </select>
             </div>
         </div>
+        <button>Добавить</button>
     </form>
 
 </@component.skeleton>

@@ -16,4 +16,9 @@ public class HallServiceImpl implements HallService{
     public List<Hall> getAll() {
         return hallRepository.getAll();
     }
+
+    @Override
+    public void create(Hall hall) {
+        hallRepository.create(hall);
+    }
 }

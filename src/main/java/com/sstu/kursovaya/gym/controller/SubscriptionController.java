@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class SubscriptionController {
 
@@ -50,5 +52,11 @@ public class SubscriptionController {
         }
         model.addAttribute("subscription", subscription);
         return "subscription-page";
+    }
+    @GetMapping("/subscription/all")
+    public String getSubscription(Model model) {
+        List<Subscription> subscriptions = subscriptionService.getAll();
+        model.addAttribute("subscriptions", subscriptions);
+        return "subscriptions-page";
     }
 }

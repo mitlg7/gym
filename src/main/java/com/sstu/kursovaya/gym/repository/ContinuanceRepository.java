@@ -34,6 +34,7 @@ public class ContinuanceRepository {
     }
 
     public void create(Continuance continuance) {
+        System.out.println(continuance);
         jdbc.update("call createCONTINUANCE(?,?)", continuance.getDays(), continuance.getType());
     }
 

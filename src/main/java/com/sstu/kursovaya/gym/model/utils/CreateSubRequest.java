@@ -6,7 +6,7 @@ import lombok.Data;
 public class CreateSubRequest {
     private String name;
     private String price;
-    private String continuance_id;
-    private String hall_id;
-    private String trainer_id;
+    private String continuance;
+    private String hall;
+    private String trainer;
 }

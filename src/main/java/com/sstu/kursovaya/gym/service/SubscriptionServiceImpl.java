@@ -35,9 +35,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public void create(CreateSubRequest createSubRequest) {
         Subscription subscription = new Subscription().setName(createSubRequest.getName())
                 .setPrice(Integer.parseInt(createSubRequest.getPrice()))
-                .setContinuance(new Continuance().setId(Integer.parseInt(createSubRequest.getContinuance_id())))
-                .setHall(new Hall().setId(Integer.parseInt(createSubRequest.getHall_id())))
-                .setTrainer(new Trainer().setId(Integer.parseInt(createSubRequest.getTrainer_id())));
+                .setContinuance(new Continuance().setId(Integer.parseInt(createSubRequest.getContinuance())))
+                .setHall(new Hall().setId(Integer.parseInt(createSubRequest.getHall())))
+                .setTrainer(new Trainer().setId(Integer.parseInt(createSubRequest.getTrainer())));
         subscriptionRepository.create(subscription);
     }
 }

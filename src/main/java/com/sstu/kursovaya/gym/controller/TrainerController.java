@@ -5,6 +5,7 @@ import com.sstu.kursovaya.gym.model.Trainer;
 import com.sstu.kursovaya.gym.model.utils.CreateClientRequest;
 import com.sstu.kursovaya.gym.model.utils.CreateTrainerRequest;
 import com.sstu.kursovaya.gym.service.GenderService;
+import com.sstu.kursovaya.gym.service.PositionService;
 import com.sstu.kursovaya.gym.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class TrainerController {
     @Autowired
     TrainerService trainerService;
+    @Autowired
+    PositionService positionService;
 
     @Autowired
     private GenderService genderService;
@@ -24,6 +29,7 @@ public class TrainerController {
     @GetMapping("/trainer/create")
     public String getPageAddClient(Model model) {
         model.addAttribute("genders", genderService.getAll());
+        model.addAttribute("positions", positionService.getAll());
         return "create-trainer";
     }
 
@@ -41,6 +47,12 @@ public class TrainerController {
         }
         model.addAttribute("trainer", trainer);
         return "trainer-page";
+    }
+    @GetMapping("/trainer/all")
+    public String getTrainers(Model model) {
+        List<Trainer> trainers = trainerService.getAll();
+        model.addAttribute("trainers", trainers);
+        return "trainers-page";
     }
 
 }
