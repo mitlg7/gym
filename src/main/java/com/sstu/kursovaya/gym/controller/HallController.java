@@ -17,6 +17,7 @@ public class HallController {
     @GetMapping("/hall/all")
     public String getHall(Model model){
         List<Hall> halls = hallService.getAll();
+
         model.addAttribute("halls", halls);
         return "halls-page";
     }
