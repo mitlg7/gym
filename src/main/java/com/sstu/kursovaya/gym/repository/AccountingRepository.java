@@ -46,12 +46,12 @@ public class AccountingRepository {
         jdbc.update("call deleteAccounting(?)", id);
     }
 
-    public void create(CreateAccountingRequest accounting) {
+    public void create(Accounting accounting) {
         jdbc.update("call  createAccounting(?,?,?,?)",
                 accounting.getStart(),
                 accounting.getEnd(),
-                accounting.getClient_id(),
-                accounting.getSubscription_id()
+                accounting.getClient().getId(),
+                accounting.getSubscription().getId()
         );
     }
 

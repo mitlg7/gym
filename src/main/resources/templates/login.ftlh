@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <form class="container col-8" method="post" action="login">
+    <form class="container col-6 mt-4" method="post" action="login">
         <div class="form-group">
             <label for="username">Логин: </label>
             <input name="username" minlength="5"  maxlength="20" type="text" class="form-control" id="username" placeholder="Логин">
@@ -13,7 +13,7 @@
             <input name="password" minlength="5"  maxlength="20" type="password" class="form-control" id="password" placeholder="Пароль">
         </div>
         <div class="row">
-            <button type="submit" class="mx-auto col-8 btn btn-secondary mt-5 ">Войти</button>
+            <button type="submit" class="mx-auto col-8 btn btn-warning btn-lg mt-5 ">Войти</button>
         </div>
     </form>
 

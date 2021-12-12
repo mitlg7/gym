@@ -6,6 +6,7 @@ import com.sstu.kursovaya.gym.repository.AccountingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -14,8 +15,8 @@ public class AccountingServiceImpl implements AccountingService {
     AccountingRepository accountingRepository;
 
     @Override
-    public void create(CreateAccountingRequest request) {
-        accountingRepository.create(request);
+    public void create(Accounting accounting) {
+        accountingRepository.create(accounting);
     }
 
     @Override

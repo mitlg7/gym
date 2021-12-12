@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <form class="container" method="post">
+    <form class="container mt-5" method="post">
         <div class="row g-3">
             <div class="col">
                 <label for="name" class="form-label">Название</label>
@@ -41,7 +41,9 @@
                 </select>
             </div>
         </div>
-        <button>Добавить</button>
+        <div class="row">
+            <button class="btn btn-lg btn-warning mt-4 mx-auto">Добавить</button>
+        </div>
     </form>
 
 </@component.skeleton>

@@ -16,7 +16,7 @@
                     <h5 class="card-title">${trainer.name}</h5>
                     <p class="card-text">${trainer.position.type}</p>
                     <p class="card-text">${trainer.phone}</p>
-                    <div class="btn btn-lg btn-danger">Записаться</div>
+                    <div class="btn btn-lg btn-warning">Записаться</div>
                 </div>
             </div>
         </#list>

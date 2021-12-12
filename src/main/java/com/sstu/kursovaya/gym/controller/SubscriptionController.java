@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -50,7 +51,9 @@ public class SubscriptionController {
         if(subscription == null){
             return "redirect:/";//todo 404
         }
+        System.out.println(subscription);
         model.addAttribute("subscription", subscription);
+        model.addAttribute("date", new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         return "subscription-page";
     }
     @GetMapping("/subscription/all")

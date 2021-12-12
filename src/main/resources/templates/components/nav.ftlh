@@ -12,7 +12,31 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/login">Логин</a>
                     </li>
-
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/manage">manage</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/client/create">Регистрация клиента</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/trainer/create">Регистрация тренера</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/subscription/create">Новый абонемент</a>
+                    </li>
+                </ul>>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/clients">Управление клиентами</a>
+                    </li>
                 </ul>
             </div>
         </div>

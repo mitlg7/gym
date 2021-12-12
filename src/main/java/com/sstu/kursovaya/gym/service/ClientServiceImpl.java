@@ -1,5 +1,6 @@
 package com.sstu.kursovaya.gym.service;
 
+import com.sstu.kursovaya.gym.model.Accounting;
 import com.sstu.kursovaya.gym.model.Client;
 import com.sstu.kursovaya.gym.model.Gender;
 import com.sstu.kursovaya.gym.model.utils.CreateClientRequest;
@@ -15,6 +16,8 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    AccountingService accountingService;
 
     @Override
     public Client getById(int id) {
@@ -28,6 +31,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteById(int id) {
+        List<Accounting> list = accountingService.getByClient(id);
+        list.forEach(accounting -> accountingService.delete(accounting.getId()));
+
         clientRepository.delete(id);
     }
 

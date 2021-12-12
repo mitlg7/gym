@@ -22,6 +22,8 @@ public class AdminController {
     HallService hallService;
     @Autowired
     PositionService positionService;
+    @Autowired
+    ClientService clientService;
 
     @GetMapping("/manage")
     public String managePage(Model model) {
@@ -51,5 +53,16 @@ public class AdminController {
         if (position != null && !position.getType().isEmpty())
             positionService.create(position);
         return "redirect:/manage";
+    }
+
+    @GetMapping("/admin/clients")
+    public String clients(Model model){
+        model.addAttribute("clients", clientService.getAll());
+        return "clients-page";
+    }
+    @PostMapping("/admin/client/delete")
+    public String deleteClient(String id){
+        clientService.deleteById(Integer.parseInt(id));
+        return "redirect:/admin/clients";
     }
 }

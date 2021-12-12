@@ -7,10 +7,11 @@
         <#list subscriptions as sub>
             <div class="card col-3 m-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">${sub.name}</h5>
+                    <img class="card-img-top" src="/img/top.jpg" alt="">
+                    <h5 class="card-title mt-3">${sub.name}</h5>
                     <p class="card-text">Price ${sub.price}</p>
                     <p class="card-text">Time ${sub.continuance.days} days</p>
-                    <div class="btn btn-lg btn-danger">Продлить</div>
+                    <div class="btn btn-lg btn-warning">Записаться</div>
                 </div>
             </div>
         </#list>
