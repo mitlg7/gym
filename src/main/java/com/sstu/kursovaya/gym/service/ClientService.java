@@ -10,4 +10,5 @@ public interface ClientService {
     List<Client> getAll();
     void deleteById(int id);
     void create(CreateClientRequest client);
+    void setToken(int id, String token);
 }

@@ -22,7 +22,9 @@ public class ClientRepository {
             .setId(rs.getInt("id"))
             .setFirstName(rs.getString("firstname"))
             .setLastname(rs.getString("lastname"))
+            .setEmail(rs.getString("email"))
             .setPhone(rs.getString("phone"))
+            .setToken(rs.getString("token"))
             .setRegistration(rs.getDate("registration"))
             .setBirthday(rs.getDate("birthday"))
             .setGender(genderRepository.get(rs.getInt("gender_id")))
@@ -42,14 +44,19 @@ public class ClientRepository {
     }
 
     public void create(Client client) {
-        jdbc.update("call createClient(?,?,?,?,?,?)",
+        jdbc.update("call createClient(?,?,?,?,?,?,?)",
                 client.getFirstName(),
                 client.getLastname(),
                 client.getPhone(),
                 client.getBirthday(),
                 client.getRegistration(),
-                client.getGender().getId()
+                client.getGender().getId(),
+                client.getEmail()
         );
+    }
+
+    public void setToken(int id, String token){
+        jdbc.update("call setToken(?,?)", id, token);
     }
 
     public void delete(int id) {

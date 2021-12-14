@@ -260,9 +260,10 @@ create procedure createClient(_firstname varchar(128),
                               _phone varchar(128),
                               _birthday date,
                               _registration date,
-                              _gender int)
-insert into client(firstname, lastname, phone, birthday, registration, gender_id, active)
-    VALUE (_firstname, _lastname, _phone, _birthday, _registration, _gender, 1);
+                              _gender int,
+                              _email varchar(128))
+insert into client(firstname, lastname, phone, birthday, registration, gender_id, active, email)
+    VALUE (_firstname, _lastname, _phone, _birthday, _registration, _gender, 1, _email);
 
 $
 
@@ -275,7 +276,9 @@ create procedure createTrainer(_name varchar(128),
 insert into trainer(name, phone, position_id, birthday, gender_id, image)
     VALUE (_name, _phone, _position_id, _birthday, _gender_id, _image);
 $
-
+create procedure setToken(_id int, _token varchar(128))
+update client set token = _token where client.id;
+$
 create procedure getAccountingByClient(_client_id int)
 select *
 from ACCOUNTING

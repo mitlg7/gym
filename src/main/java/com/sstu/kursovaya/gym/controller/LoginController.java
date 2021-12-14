@@ -21,7 +21,7 @@ public class LoginController {
     }
     @GetMapping("/registration")
     public String registrationForm(Model model){
-        return "register";
+        return "check";
     }
     @PostMapping("/registration")
     public String registration(RegistrationRequest request){

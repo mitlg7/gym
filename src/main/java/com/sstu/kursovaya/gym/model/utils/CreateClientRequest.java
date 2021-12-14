@@ -8,5 +8,6 @@ public class CreateClientRequest {
     private String lastname;
     private String phone;
     private String birthday;
+    private String email;
     private String gender;
 }

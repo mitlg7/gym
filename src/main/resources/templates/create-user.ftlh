@@ -25,6 +25,13 @@
                 <input name="birthday" id="birthday" type="date" class="form-control" placeholder="Дата рождения">
             </div>
         </div>
+        <div class="row g-3">
+            <div class="col">
+                <label for="email" class="form-label">Почта</label>
+                <input name="email" id="email" type="tel" class="form-control" placeholder="email">
+            </div>
+
+        </div>
         <div class="col">
             <label for="gender" class="form-label">Пол</label>
             <select class="form-control" name="gender" id="gender">

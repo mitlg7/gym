@@ -11,7 +11,7 @@
                 <h1>Профессионалы высокого уровня</h1>
                 <h2>Приглашаем присоединиться к нашему фитнес-клубу - Нон стоп</h2>
                 <div class="d-flex">
-                    <div class="my-3 btn btn-lg btn-warning fw-bold">Присоединиться</div>
+                  <a href="/map">  <div class="my-3 btn btn-lg btn-warning fw-bold">Присоединиться</div></a>
                 </div>
                 <div class="row mt-4">
                     <div class="col-lg-4 col-md-6">

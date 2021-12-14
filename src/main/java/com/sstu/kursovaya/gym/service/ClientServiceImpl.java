@@ -39,7 +39,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void create(CreateClientRequest clientRequest) {
+        //todo проверить почту
         Client client = new Client()
+                .setEmail(clientRequest.getEmail())
                 .setFirstName(clientRequest.getName())
                 .setLastname(clientRequest.getLastname())
                 .setBirthday(Date.valueOf(clientRequest.getBirthday()))
@@ -48,5 +50,10 @@ public class ClientServiceImpl implements ClientService {
                 .setGender(new Gender().setId(Integer.parseInt(clientRequest.getGender())));
 
         clientRepository.create(client);
+    }
+
+    @Override
+    public void setToken(int id, String token) {
+        clientRepository.setToken(id, token);
     }
 }

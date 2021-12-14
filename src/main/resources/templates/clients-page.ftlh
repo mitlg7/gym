@@ -12,6 +12,7 @@
             <th class="sorting_disabled">Телефон</th>
             <th class="sorting_disabled">Дата рождения</th>
             <th class="sorting_disabled">Дата регистрации</th>
+            <th class="sorting_disabled">Почта</th>
             <th class="sorting_disabled">Пол</th>
             <th class="sorting_disabled"></th>
         </tr>
@@ -25,6 +26,7 @@
                 <td>${client.phone}</td>
                 <td>${client.birthday}</td>
                 <td>${client.registration}</td>
+                <td>${client.email}</td>
                 <td>${client.gender.type}</td>
                 <td><a class="btn btn-warning" href="/client/${client.id}">Перейти в профиль</a></td>
 

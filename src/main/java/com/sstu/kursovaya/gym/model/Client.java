@@ -12,6 +12,8 @@ public class Client {
     private String firstName;
     private String lastname;
     private String phone;
+    private String email;
+    private String token;
     private Date birthday;
     private Date registration;
     private Gender gender;
