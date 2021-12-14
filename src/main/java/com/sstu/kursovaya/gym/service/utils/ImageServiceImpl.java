@@ -18,7 +18,7 @@ public class ImageServiceImpl implements ImageService {
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
-        String resultFileName = UUID.randomUUID().toString().substring(1,32) + file.getOriginalFilename();
+        String resultFileName = UUID.randomUUID().toString().substring(1,10) + file.getOriginalFilename();
         try {
             file.transferTo(new File(uploadPath + "/" + resultFileName));
         } catch (Exception e) {

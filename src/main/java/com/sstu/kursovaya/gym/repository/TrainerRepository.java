@@ -3,6 +3,7 @@ package com.sstu.kursovaya.gym.repository;
 import com.sstu.kursovaya.gym.model.Admin;
 import com.sstu.kursovaya.gym.model.Trainer;
 import com.sstu.kursovaya.gym.model.utils.CreateTrainerRequest;
+import com.sstu.kursovaya.gym.service.utils.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -20,6 +21,9 @@ public class TrainerRepository {
     @Autowired
     private PositionRepository positionRepository;
 
+    @Autowired
+    ImageService imageService;
+
     public TrainerRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
@@ -30,6 +34,7 @@ public class TrainerRepository {
             .setBirthday(rs.getDate("birthday"))
             .setGender(genderRepository.get(rs.getInt("gender_id")))
             .setPhone(rs.getString("phone"))
+            .setImage(rs.getString("image"))
             .setPosition(positionRepository.get(rs.getInt("position_id")));
 
     private Trainer one(String sql, Object... args) {
@@ -46,12 +51,13 @@ public class TrainerRepository {
     }
 
     public void create(CreateTrainerRequest trainer) {//todo поправить процедуру?
-        jdbc.update("call createTrainer(?,?,?,?,?)",
+        jdbc.update("call createTrainer(?,?,?,?,?,?)",
                 trainer.getName(),
                 trainer.getPhone(),
                 trainer.getPosition(),
                 trainer.getBirthday(),
-                trainer.getGender()
+                trainer.getGender(),
+                imageService.saveImage(trainer.getImage())
         );
     }
 

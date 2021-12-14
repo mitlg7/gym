@@ -77,6 +77,7 @@ create table TRAINER
     id          int primary key auto_increment,
     name        varchar(128),
     phone       varchar(128),
+    image       varchar(256),
     birthday    date,
     gender_id   int,
     position_id int,
@@ -269,9 +270,10 @@ create procedure createTrainer(_name varchar(128),
                                _phone varchar(128),
                                _position_id int,
                                _birthday date,
-                               _gender_id int)
-insert into trainer(name, phone, position_id, birthday, gender_id)
-    VALUE (_name, _phone, _position_id, _birthday, _gender_id);
+                               _gender_id int,
+                               _image varchar(256))
+insert into trainer(name, phone, position_id, birthday, gender_id, image)
+    VALUE (_name, _phone, _position_id, _birthday, _gender_id, _image);
 $
 
 create procedure getAccountingByClient(_client_id int)

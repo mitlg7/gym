@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <form class="container" method="post">
+    <form class="container" method="post" enctype="multipart/form-data">
         <div class="row g-3">
             <div class="col">
                 <label for="name" class="form-label">Имя</label>
@@ -19,6 +19,10 @@
                 <label for="birthday" class="form-label">Дата рождения</label>
                 <input name="birthday" id="birthday" type="date" class="form-control" placeholder="Дата рождения">
             </div>
+        </div>
+        <div class="row">
+            <label for="image" class="form-label">Фото профиля</label>
+            <input name="image" id="image" type="file" accept="image" class="form-control" placeholder="Фото профиля">
         </div>
         <div class="col">
             <label for="gender" class="form-label">Пол</label>
