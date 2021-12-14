@@ -3,9 +3,6 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.2144649399693!2d45.982052215961!3d51.52762611704478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c7aa7443a281%3A0xfa9c3268188dcac7!2z0JHQtdCz0L7QstCw0Y8g0YPQuy4sIDMvOSwg0KHQsNGA0LDRgtC-0LIsINCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC7LiwgNDEwMDU0!5e0!3m2!1sru!2sru!4v1639522818190!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
     <form method="post" action="/check" class="container col-4 mt-5">
         <#if error??>
         <p class="fs-3">${error}</p>
@@ -44,22 +41,22 @@
             </#if>
             <#else>
                 <div class="form-group">
-                    <label for="email">Почта: </label>
+                    <label for=" fs-4 mb-3">Ваша почта указанная про регистрации в клубе: </label>
                     <input name="email" type="text" class="form-control" id="email" placeholder="Емаил">
                 </div>
 
                 <div class="row">
-                    <button type="submit" class="mx-auto col-8 btn btn-secondary mt-5 ">Проверить</button>
+                    <button type="submit" class="mx-auto col-8 btn btn-warning mt-5 btn-lg">Проверить</button>
                 </div>
             </#if>
 
             </#if>
             <#if valid??>
                 <#if valid == "no">
-                    <p class="fs-3">Пользователя с такой почтой нет</p>
+                    <p class="fs-5 mt-3">Пользователя с такой почтой нет</p>
                 </#if>
                 <#if valid == "yes">
-                    <p class="fs-3">На вашу почту отправлено письмо</p>
+                    <p class="fs-5 mt-3">На вашу почту отправлено письмо</p>
                 </#if>
             </#if>
 

@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <div class="container row col-12 mb-4">
+    <div class="container row col-12 mt-4">
         <div class="col-3">
             <#if client.gender.type == "Мужской">
                 <img class="img-thumbnail" src="/img/male.jpg">
@@ -17,8 +17,8 @@
             <p>Телефон: ${client.phone} </p>
             <p>Дата рождения: ${client.birthday}</p>
         </div>
-        <div class="col-3">
-            <a class="btn btn-lg btn-warning m-4" href="/client/${client.id}/accounting"> Управление абонементами пользователя</a>
+        <div class="col-3 text-center">
+            <a class="btn btn-warning m-4" href="/client/${client.id}/accounting"> Управление абонементами пользователя</a>
             <form method="post" action="/admin/client/delete">
                 <input hidden name="id" value="${client.id}">
                 <button class="btn btn-danger">Удалить</button>
@@ -33,9 +33,9 @@
                             <a class="text-warning" href="/subscription/${acc.subscription.id}"></a>${acc.subscription.name}
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Начало: ${acc.start} Конец: ${acc.end}</p>
-                            <p class="card-text">Длительность:${acc.subscription.continuance.days} дней</p>
-
+                            <p class="card-text">Начало: ${acc.start} <br> Конец: ${acc.end}</p>
+                            <p class="card-text">Длительность: ${acc.subscription.continuance.days} дней</p>
+                            <p class="card-text">Зал: ${acc.subscription.hall.name}<br>Тренер: ${acc.subscription.trainer.name}</p>
                         </div>
                     </div>
                 </#list>

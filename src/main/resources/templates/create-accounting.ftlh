@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <div class="container fs-4 mt-4">
+    <div class="container fs-4 mt-4 border border-warning">
         <div class="row">
             <div class="col-12 row mb-4">
                 <div class="col-3">
@@ -36,24 +36,24 @@
                     <#list  subs as sub>
                         <div class="tab-pane fade" id="list-${sub.id}" role="tabpanel" aria-labelledby="${sub.id}">
                             <form method="post">
-                                <p class="date theme-parent-text-color-alternate">Тренер: <label class="fs-4 fw-bold title theme-parent-text-color text-warning">${sub.trainer.name}
+                                <p class="date theme-parent-text-color-alternate">Тренер: <label class="fs-4  title theme-parent-text-color text-warning">${sub.trainer.name}
                                     - ${sub.trainer.position.type}</label></p>
 
                                 <p class="description theme-parent-text-color">Отличный тренер, с огромным стажем. За
                                     свою карьеру воспитал несколько чемпионов. С ним вы добьетесь своей цели, будь то
                                     похудение, набор массы или повышение силовых показателей.</p>
-                                <p class="date theme-parent-text-color-alternate">Зал: <label class="fw-bold fs-4 text-warning title theme-parent-text-color">${sub.hall.name}</label></p>
+                                <p class="date theme-parent-text-color-alternate">Зал: <label class=" fs-4 text-warning title theme-parent-text-color">${sub.hall.name}</label></p>
 
                                 <p class="description theme-parent-text-color">Потрясающий новый зал. Новый тренажеры
                                     для каждого, большой выбор нагрузок, возможность посещать его в вечернее и утреннее
                                     время.</p>
                                 <br>
-                                <p>Длительность абонемента - <label class="fw-bold fs-3 text-warning">${sub.continuance.days} дней.</label><br>
-                                    Начало сегодня - <label class="fw-bold fs-3 text-warning">${date}</label></p>
-                                <p><label>Стоимость абонемента - </label><label class="fw-bold fs-3 text-warning">${sub.price}
+                                <p>Длительность абонемента - <label class=" fs-3 text-warning">${sub.continuance.days} дней.</label><br>
+                                    Начало сегодня - <label class=" fs-3 text-warning">${date}</label></p>
+                                <p><label>Стоимость абонемента - </label><label class=" fs-3 text-warning">${sub.price}
                                         ₽</label></p>
                                 <input hidden name="sub" value="${sub.id}">
-                                <button>Продать</button>
+                                <button class="btn btn-warning col-4 row">Продать</button>
                             </form>
                         </div>
                     </#list>
