@@ -21,7 +21,8 @@
                     <h5 class="card-title">${trainer.name}</h5>
                     <p class="card-text">${trainer.position.type}</p>
                     <p class="card-text">${trainer.phone}</p>
-                    <div class="btn btn-lg btn-warning">Записаться</div>
+                        <a href="/map" class="btn col-6 btn-warning m-1">Записаться</a>
+                        <a href="/trainer/${trainer.id}" class="btn col-6 btn-warning m-1">Перейти</a>
                 </div>
             </div>
         </#list>

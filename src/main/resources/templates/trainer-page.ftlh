@@ -24,6 +24,20 @@
             <p>Дата рождения: ${trainer.birthday}</p>
 
         </div>
+        <p class="fs-4">Абонементы с этим тренером: </p>
+        <div class="row container m-4">
+            <#list subs as sub>
+                <div class="card col-3 m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <img class="card-img-top" src="/img/top.jpg" alt="">
+                        <h5 class="card-title mt-3">${sub.name}</h5>
+                        <p class="card-text">Price ${sub.price}</p>
+                        <p class="card-text">Time ${sub.continuance.days} days</p>
+                        <a href="/map" class="btn btn-lg btn-warning">Записаться</a>
+                    </div>
+                </div>
+            </#list>
+        </div>
 
 
     </div>

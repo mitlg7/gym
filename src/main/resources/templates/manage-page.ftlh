@@ -12,7 +12,7 @@
         <div class="input-group mb-3 mt-1">
             <label class="input-group-text" for="name">Новый зал:</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Название зала" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Добавить</button>
+            <button class="btn btn-outline-secondary" id="button-addon2">Добавить</button>
         </div>
     </form>
     <form class="container col-10" action="/admin/continuance/add" method="post">
@@ -25,7 +25,7 @@
             <label class="input-group-text" for="type">Новая длительность абонемента:</label>
             <input type="text" id="type" name="type" class="form-control" placeholder="Название" aria-describedby="button-addon2">
             <input type="number" id="name" name="days" class="form-control" placeholder="Количество дней" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Добавить</button>
+            <button class="btn btn-outline-secondary" id="button-addon2">Добавить</button>
         </div>
     </form>
     <form class="container col-10" action="/admin/position/add" method="post">
@@ -37,7 +37,7 @@
         <div class="input-group mb-3 mt-1">
             <label class="input-group-text" for="type">Новая должность: </label>
             <input type="text" id="type" name="type" class="form-control" placeholder="Должность" aria-describedby="button-addon2">
-           <button class="btn btn-outline-secondary" type="button" id="button-addon2">Добавить</button>
+           <button class="btn btn-outline-secondary" id="button-addon2">Добавить</button>
         </div>
     </form>
 

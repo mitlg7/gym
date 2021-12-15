@@ -3,7 +3,7 @@
 
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
-    <form method="post" action="/check" class="container col-4 mt-5">
+    <form method="post" action="/check" class="container mt-5">
         <#if error??>
         <p class="fs-3">${error}</p>
         <#else>
@@ -24,7 +24,7 @@
             </div>
             <#if accs??>
                 <#list accs as acc>
-                    <div class="card">
+                    <div class="card m-4">
                         <div class="card-header">
                             <a class="text-warning"
                                href="/subscription/${acc.subscription.id}"></a>${acc.subscription.name}
@@ -53,10 +53,10 @@
             </#if>
             <#if valid??>
                 <#if valid == "no">
-                    <p class="fs-5 mt-3">Пользователя с такой почтой нет</p>
+                    <p class="fs-5 mt-3 alert-danger alert">Пользователя с такой почтой нет</p>
                 </#if>
                 <#if valid == "yes">
-                    <p class="fs-5 mt-3">На вашу почту отправлено письмо</p>
+                    <p class="fs-5 mt-3 alert alert-primary">На вашу почту отправлено письмо</p>
                 </#if>
             </#if>
 

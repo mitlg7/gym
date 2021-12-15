@@ -4,9 +4,18 @@
 <@component.skeleton title="Главная страница">
     <@bootstrap.navbar/>
     <div class="container mt-5 mb-3">
+        <#if error??>
+
+            <div class="alert alert-danger">
+                Сочетание логина и пароля не найдено в системе.
+            </div>
+        </#if>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <div class="card">
+                    <div class="row d-flex justify-content-center mt-3"><img class="" style="height: 100px; width: auto"
+                                                                             src="https://rusample-m.ru/sites/default/files/imagecache/pic_normal/sites/default/files/pic/table/tk2-1.jpg">
+                    </div>
                     <form class="container col-6 mt-4" method="post" action="login">
                         <div class="form-group">
                             <label for="username">Логин: </label>
@@ -19,7 +28,7 @@
                                    id="password" placeholder="Пароль">
                         </div>
                         <div class="row">
-                            <button type="submit" class="mx-auto col-8 btn btn-warning btn-lg mt-5 ">Войти</button>
+                            <button type="submit" class="mx-auto col-8 btn btn-warning btn-lg mt-5 mb-5 ">Войти</button>
                         </div>
                     </form>
                 </div>

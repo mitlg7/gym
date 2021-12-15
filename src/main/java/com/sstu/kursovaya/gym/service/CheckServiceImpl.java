@@ -30,7 +30,7 @@ public class CheckServiceImpl implements CheckService {
             return false;
         } else {
             clientService.setToken(clients.get(0).getId(), token);
-            emailService.send(clients.get(0).getEmail(), "Твоя ссылка - /check?token=" + token);
+            emailService.send(clients.get(0).getEmail(), "Твоя ссылка - localhost:8080/check?token="+ token );
         }
         return true;
     }

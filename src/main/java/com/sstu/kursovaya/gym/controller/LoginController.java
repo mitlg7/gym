@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -15,16 +16,19 @@ public class LoginController {
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String loginForm(Model model){
-        System.out.println(passwordEncoder.encode("admin"));
+    public String loginForm(Model model, @RequestParam(required = false) boolean error) {
+        if(error)
+            model.addAttribute("error", "yes");
         return "login";
     }
+
     @GetMapping("/registration")
-    public String registrationForm(Model model){
+    public String registrationForm(Model model) {
         return "check";
     }
+
     @PostMapping("/registration")
-    public String registration(RegistrationRequest request){
+    public String registration(RegistrationRequest request) {
         return "null";
     }
 }

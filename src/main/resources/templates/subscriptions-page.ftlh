@@ -11,7 +11,8 @@
                     <h5 class="card-title mt-3">${sub.name}</h5>
                     <p class="card-text">Price ${sub.price}</p>
                     <p class="card-text">Time ${sub.continuance.days} days</p>
-                    <div class="btn btn-lg btn-warning">Записаться</div>
+                    <a href="/map" class="btn  btn-warning m-1">Записаться</a>
+                    <a href="/subscription/${sub.id}" class="btn m-1 btn-warning">Перейти</a>
                 </div>
             </div>
         </#list>

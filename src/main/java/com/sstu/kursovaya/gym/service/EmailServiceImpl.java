@@ -14,6 +14,7 @@ public class EmailServiceImpl implements EmailService{
     public void send(String email, String message) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("shoehubstore@yandex.ru");
+        mailMessage.setSubject("Ван токен для првоерки абонементов");
         mailMessage.setText(message);
         mailMessage.setTo(email);
         emailSender.send(mailMessage);

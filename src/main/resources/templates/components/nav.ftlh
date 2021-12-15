@@ -18,9 +18,7 @@
                 </ul>
                 <ul class="navbar-nav mr-auto">
                     <#if known >
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" href="/user">ЛК ${name}</a>
-                        </li>
+
                         <#else >
                         <li class="nav-item">
                         <a class="nav-link text-warning" href="/login">Логин</a>

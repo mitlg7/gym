@@ -28,7 +28,7 @@
         <div class="container">
             <#if accounting??>
                 <#list accounting as acc>
-                    <div class="card">
+                    <div class="card m-2">
                         <div class="card-header">
                             <a class="text-warning" href="/subscription/${acc.subscription.id}"></a>${acc.subscription.name}
                         </div>
