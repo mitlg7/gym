@@ -299,3 +299,6 @@ select *
 from GENDER
 where id = _id;
 $
+create procedure setToken(IN _id int, IN _token varchar(128))
+update client set token = _token where client.id;
+
